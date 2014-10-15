@@ -29,7 +29,7 @@ local LoadCustomLibrary  = NevermoreEngine.LoadLibrary
 --[[
 Updates and Changes log
 October 15th, 2014
-- Converted Signal prerequisite and substituted it with RbxUtility's CreateSignal function until a working module is created.
+- Converted Signal prerequisite and substituted it with RbxUtility's CreateSignal function until a working module is created. (~learnt)
 
 August 18th, 2014
 - Removed isA method
