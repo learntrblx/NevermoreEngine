@@ -5,6 +5,7 @@ local NevermoreEngine   = require(ReplicatedStorage:WaitForChild("NevermoreEngin
 local LoadCustomLibrary = NevermoreEngine.LoadLibrary
 
 local qSystems          = LoadCustomLibrary("qSystems")
+local RbxUtility	= LoadLibrary("RbxUtility")
 
 qSystems:Import(getfenv(1))
 
@@ -13,7 +14,8 @@ local ClientAuthenticationService = {} do
 	local RequestStream = NevermoreEngine.GetRemoteFunction("AuthenticationServiceRequestor")
 	local EventStream   = NevermoreEngine.GetRemoteEvent("AuthenticationServiceEventStream")
 
-	ClientAuthenticationService.AuthenticationChanged = CreateSignal()
+	ClientAuthenticationService.AuthenticationChanged = RbxUtility.CreateSignal()
+	--CreateSignal() was recognized as a table value, and was therefore replaced with a more direct usage
 
 	EventStream.OnClientEvent:connect(function(AuthenticationChange)
 		if type(AuthenticationChange) == "string" then
