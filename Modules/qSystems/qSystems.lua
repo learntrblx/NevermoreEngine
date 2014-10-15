@@ -28,6 +28,9 @@ local LoadCustomLibrary  = NevermoreEngine.LoadLibrary
 
 --[[
 Updates and Changes log
+October 15th, 2014
+- Converted Signal prerequisite and substituted it with RbxUtility's CreateSignal function until a working module is created.
+
 August 18th, 2014
 - Removed isA method
 - Cleaned up commented code
@@ -69,7 +72,7 @@ December 28th, 2013
 ]]
 	
 local Type                    = LoadCustomLibrary('Type')
-local Signal                  = LoadCustomLibrary('Signal')
+local RbxUtility              = LoadLibrary("RbxUtility")
 
 local lib                     = {}
 
@@ -79,8 +82,8 @@ local lib                     = {}
 
 -- Creates a signal, like before, but this time uses internal Lua signals that allow for the sending of recursive
 -- tables versus using ROBLOX's parsing system. 
-lib.CreateSignal = Signal.new
-lib.createSignal = Signal.new
+lib.CreateSignal = RbxUtility.CreateSignal()
+lib.createSignal = RbxUtility.CreateSignal()
 
 local function RoundNumber(Number, Divider)
 	-- Rounds a Number, with 1.5 rounding up to 2, and so forth, by default. 
